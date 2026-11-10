@@ -11,8 +11,8 @@ export async function generateExtensionZip(): Promise<Blob> {
   // 1. Manifest V3
   const manifestContent = JSON.stringify({
     manifest_version: 3,
-    name: "Memora — AI Conversation Memory & Sync",
-    version: "1.0.0",
+    name: "Markbook Note — AI Conversation Memory & Sync",
+    version: "1.0.3",
     description: "Automatically capture, organize, and transfer conversation context across ChatGPT, Google Gemini, and Claude.",
     permissions: [
       "storage",
@@ -26,7 +26,7 @@ export async function generateExtensionZip(): Promise<Blob> {
     ],
     action: {
       default_popup: "popup.html",
-      default_title: "Memora Memory Hub"
+      default_title: "Markbook Note"
     },
     background: {
       service_worker: "background.js",
@@ -51,7 +51,7 @@ export async function generateExtensionZip(): Promise<Blob> {
   // 2. Background service worker
   const backgroundJs = `
 chrome.runtime.onInstalled.addListener(() => {
-  console.log('[Memora] Background service worker initialized.');
+  console.log('[Markbook Note] Background service worker initialized.');
   if (chrome.action && chrome.action.setBadgeText) {
     chrome.action.setBadgeText({ text: 'ON' });
     chrome.action.setBadgeBackgroundColor({ color: '#6366F1' });
@@ -61,7 +61,7 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'CONVERSATION_CAPTURED') {
     const convo = request.data;
-    console.log('[Memora] Captured conversation: ' + convo.title + ' (' + convo.messages.length + ' msgs)');
+    console.log('[Markbook Note] Captured conversation: ' + convo.title + ' (' + convo.messages.length + ' msgs)');
     if (chrome.action && chrome.action.setBadgeText) {
       chrome.action.setBadgeText({ text: String(convo.messages.length) });
       setTimeout(() => { chrome.action.setBadgeText({ text: 'ON' }); }, 3000);
@@ -75,7 +75,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
   // 3. Content Script with Adapters
   const contentScriptJs = `
-// Memora Content Script - Unified Platform Observer
+// Markbook Note Content Script - Unified Platform Observer
 (function() {
   const url = window.location.href;
   let platform = null;
@@ -86,7 +86,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
   if (!platform) return;
 
-  console.log('[Memora] Active on ' + platform);
+  console.log('[Markbook Note] Active on ' + platform);
 
   function extractMessages() {
     const msgs = [];
@@ -172,7 +172,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 </head>
 <body>
   <div class="header">
-    <div class="brand">⚡ Memora</div>
+    <div class="brand">⚡ Markbook Note</div>
     <span class="tag">Active</span>
   </div>
   <div class="box">
@@ -221,17 +221,17 @@ document.addEventListener('DOMContentLoaded', () => {
   zip.file('popup.js', popupJs);
 
   // 6. Installation README
-  const readme = `# Memora Chrome Extension Installation
+  const readme = `# Markbook Note Chrome Extension Installation
 
-Thank you for downloading Memora!
+Thank you for downloading Markbook Note!
 
 ## Installation Steps:
-1. Extract this zip archive into a folder on your computer (e.g. ~/Downloads/memora-extension).
+1. Extract this zip archive into a folder on your computer (e.g. ~/Downloads/markbook-note-extension).
 2. Open Google Chrome and go to: chrome://extensions/
 3. Turn ON "Developer mode" in the top right toggle.
 4. Click "Load unpacked" button in the top left.
 5. Select the extracted folder containing manifest.json.
-6. The Memora icon will appear in your Chrome toolbar.
+6. The Markbook Note icon will appear in your Chrome toolbar.
 7. Open ChatGPT, Google Gemini, or Claude and enjoy automatic conversation storage!
 `;
   zip.file('README.md', readme);

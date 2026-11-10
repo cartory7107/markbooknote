@@ -78,7 +78,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `memora-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `markbook-note-backup-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
   }

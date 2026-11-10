@@ -11,9 +11,9 @@ export const OpenSourceDocs: React.FC = () => {
   const [copied, setCopied] = useState(false);
 
   const docs = {
-    readme: `# Memora — Open Source AI Conversation Memory Platform
+    readme: `# Markbook Note — Open Source AI Conversation Memory Platform
 
-Memora is a privacy-first, local-storage-centered AI conversation memory platform comprising a Chrome Extension (Manifest V3), a Web Dashboard, an interactive Extension Simulator, and a subscription & licensing engine.
+Markbook Note is a privacy-first, local-storage-centered AI conversation memory platform comprising a Chrome Extension (Manifest V3), a Web Dashboard, an interactive Extension Simulator, and a subscription & licensing engine.
 
 ## Key Capabilities
 - **Automatic Multi-Turn Capture**: Listens to chat sessions on ChatGPT, Google Gemini, and Claude with dedicated DOM adapters.
@@ -34,7 +34,7 @@ Memora is a privacy-first, local-storage-centered AI conversation memory platfor
 │                       Browser Process                         │
 │                                                               │
 │   ┌───────────────────────────┐    ┌──────────────────────┐   │
-│   │   AI Tab (ChatGPT/Gemini) │    │  Memora Web App      │   │
+│   │   AI Tab (ChatGPT/Gemini) │    │  Markbook Note Web   │   │
 │   │   - Content Script        │    │  - React Dashboard   │   │
 │   │   - DOM MutationObserver  │    │  - Context Studio    │   │
 │   └─────────────┬─────────────┘    └──────────┬───────────┘   │
@@ -52,7 +52,7 @@ Memora is a privacy-first, local-storage-centered AI conversation memory platfor
 ## Zero Ingestion Policy
 The backend receives only license verification requests and explicitly published public share requests. Chat dialogues never leave client device memory.`,
 
-    contributing: `# Contributing to Memora
+    contributing: `# Contributing to Markbook Note
 
 We welcome open-source contributions to platform adapters, context exporters, and accessibility improvements!
 
@@ -72,11 +72,11 @@ By default, conversation texts and message histories are stored exclusively in c
 Public share links are generated only upon explicit user confirmation. Each share link is protected by a client-side revocation key.
 
 ## 3. Vulnerability Disclosure
-To report a security vulnerability, please email security@memora.dev or open a private security advisory on GitHub.`,
+To report a security vulnerability, please email security@markbooknote.dev or open a private security advisory on GitHub.`,
 
     license: `MIT License
 
-Copyright (c) 2026 Memora Open Source Contributors
+Copyright (c) 2026 Markbook Note Open Source Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
