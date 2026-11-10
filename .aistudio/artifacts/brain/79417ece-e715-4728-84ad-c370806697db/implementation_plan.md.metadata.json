@@ -1,0 +1,6 @@
+{
+  "summary":  "Comprehensive architectural and implementation plan for Memora, an open-source AI conversation memory platform featuring a web dashboard, real Chrome Extension (Manifest V3), interactive extension simulator, local IndexedDB storage, multi-channel payment simulator (bKash, Nagad, Card), and context transfer engine.",
+  "updatedAt":  "2026-11-09T11:16:38.042257313Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}
